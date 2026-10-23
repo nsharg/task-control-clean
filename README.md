@@ -2,6 +2,10 @@
 
 Projects, tasks and tickets for small teams, and for the AI agents that work with them.
 
+Open source under the [MIT License](LICENSE). You can use, modify, and share
+Task Control, including commercially, subject to the license terms.
+Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 - **No public sign-up.** The super admin (`SUPER_ADMIN_EMAILS`) creates every account in `/admin` with a one-time password, which the person must replace at first sign-in. No email is sent in the beta. Two-factor auth is off for now.
 - **Workspaces** have owners, admins, members and **guests**. Guests are partners who see only the projects they are added to.
 - **Tickets** (bugs, feature requests, questions) link to tasks.
