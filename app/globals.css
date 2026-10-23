@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Neutral, ChatGPT-style greys with Apple system type.
+ * Components use the Tailwind names mapped in @theme (bg-surface, text-fg-2, …).
+ */
+:root {
+  --bg: #ffffff;
+  --bg-sidebar: #f9f9f9;
+  --bg-muted: #f4f4f4;
+  --bg-hover: #ececec;
+  --bg-elevated: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.32);
+  --border: rgba(13, 13, 13, 0.08);
+  --border-strong: rgba(13, 13, 13, 0.15);
+  --fg: #0d0d0d;
+  --fg-2: #5d5d5d;
+  --fg-3: #8f8f8f;
+  --accent: #0d0d0d;
+  --accent-fg: #ffffff;
+  --focus: #0a84ff;
+  --green: #10a37f;
+  --blue: #0a84ff;
+  --amber: #d98e04;
+  --red: #e5484d;
+  --purple: #8e4ec6;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --header: rgba(255, 255, 255, 0.78);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg: #212121;
+    --bg-sidebar: #171717;
+    --bg-muted: #2a2a2a;
+    --bg-hover: #303030;
+    --bg-elevated: #2a2a2a;
+    --bg-overlay: rgba(0, 0, 0, 0.6);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --fg: #ececec;
+    --fg-2: #b4b4b4;
+    --fg-3: #8a8a8a;
+    --accent: #ececec;
+    --accent-fg: #0d0d0d;
+    --green: #19c37d;
+    --amber: #f5a524;
+    --red: #ff6369;
+    --purple: #b58af5;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+    --header: rgba(33, 33, 33, 0.78);
+    color-scheme: dark;
+  }
+}
+
+:root.dark {
+  --bg: #212121;
+  --bg-sidebar: #171717;
+  --bg-muted: #2a2a2a;
+  --bg-hover: #303030;
+  --bg-elevated: #2a2a2a;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --fg: #ececec;
+  --fg-2: #b4b4b4;
+  --fg-3: #8a8a8a;
+  --accent: #ececec;
+  --accent-fg: #0d0d0d;
+  --green: #19c37d;
+  --amber: #f5a524;
+  --red: #ff6369;
+  --purple: #b58af5;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+  --header: rgba(33, 33, 33, 0.78);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-sidebar: var(--bg-sidebar);
+  --color-muted: var(--bg-muted);
+  --color-hover: var(--bg-hover);
+  --color-elevated: var(--bg-elevated);
+  --color-overlay: var(--bg-overlay);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-focus: var(--focus);
+  --color-green: var(--green);
+  --color-blue: var(--blue);
+  --color-amber: var(--amber);
+  --color-red: var(--red);
+  --color-purple: var(--purple);
+  --shadow-pop: var(--shadow);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--focus) 25%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slide-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.animate-fade { animation: fade-in 150ms ease-out; }
+.animate-pop { animation: pop-in 150ms cubic-bezier(0.2, 0.9, 0.3, 1); }
+.animate-slide { animation: slide-in 200ms cubic-bezier(0.2, 0.9, 0.3, 1); }
+
+/* Rendered markdown (comments, descriptions). */
+.prose-chat { font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; }
+.prose-chat > * + * { margin-top: 0.6em; }
+.prose-chat a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+.prose-chat code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-muted); padding: 0.1em 0.35em; border-radius: 6px; }
+.prose-chat pre { background: var(--bg-muted); padding: 12px 14px; border-radius: 12px; overflow-x: auto; }
+.prose-chat pre code { background: none; padding: 0; }
+.prose-chat ul { list-style: disc; padding-inline-start: 1.3em; }
+.prose-chat ol { list-style: decimal; padding-inline-start: 1.3em; }
+.prose-chat blockquote { border-inline-start: 3px solid var(--border-strong); padding-inline-start: 12px; color: var(--fg-2); }
+.prose-chat h1, .prose-chat h2, .prose-chat h3 { font-weight: 600; font-family: var(--font-display); }
+.prose-chat table { border-collapse: collapse; }
+.prose-chat td, .prose-chat th { border: 1px solid var(--border); padding: 4px 8px; }
+
+/* WYSIWYG editor (components/ui/rich-editor.tsx) */
+.rich-field { border-radius: 12px; padding: 8px 12px 6px; transition: background-color 0.15s, border-color 0.15s; }
+.rich-field:focus-within { border-color: var(--focus, var(--border-strong)); }
+.rich-editor { min-height: 5em; }
+.rich-editor p.is-editor-empty:first-child::before { content: attr(data-placeholder); float: inline-start; height: 0; color: var(--fg-3); pointer-events: none; }
+.rich-editor a { cursor: text; }
+.composer .rich-editor { min-height: 1.6em; max-height: 240px; overflow-y: auto; font-size: 15px; }

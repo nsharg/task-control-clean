@@ -1,0 +1,57 @@
+{
+  "project": {
+    "key": "DEMO",
+    "name": "Example notebook",
+    "description": "Fictional example using synthetic notes only."
+  },
+  "origin": "Fictional example request",
+  "milestones": [
+    {
+      "key": "M1",
+      "name": "Create and organize notes",
+      "goal": "A user can create a note and place it in a notebook.",
+      "exitCriteria": [
+        "A new note appears in the selected notebook.",
+        "Existing notes retain their contents."
+      ],
+      "track": "Core",
+      "features": [
+        {
+          "title": "Add a note to a notebook",
+          "why": "Fictional scenario: an existing notebook needs another note.",
+          "acceptance": [
+            "On a notebook page, Add note opens an empty editor.",
+            "Saving a title and body adds one note to that notebook.",
+            "Existing notes remain unchanged."
+          ],
+          "label": "core",
+          "days": 2,
+          "tasks": [
+            {
+              "title": "Save a note in the selected notebook",
+              "tier": "standard"
+            },
+            "Display the saved note",
+            {
+              "title": "Label the new action",
+              "tier": "routine"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "backlog": [
+    {
+      "title": "Duplicate a notebook",
+      "why": "Fictional optional enhancement; scope is undecided."
+    }
+  ],
+  "notes": [
+    "The example editor needs clearer help text",
+    {
+      "title": "Offer a keyboard shortcut for a new note",
+      "type": "idea"
+    }
+  ]
+}

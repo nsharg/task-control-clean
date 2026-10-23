@@ -1,0 +1,54 @@
+{
+  "skill_name": "task-control",
+  "evals": [
+    {
+      "id": 1,
+      "name": "build-next",
+      "prompt": "pick up the next thing in the tracker and build it. you can push to origin main once the tests pass.",
+      "expected_output": "The agent asks Task Control what is next, builds the first ready feature task by task, ends every commit subject with the task's key, pushes, and finishes the feature with a summary of three lines at most. It writes no comments, sets no status by hand, and leaves the second feature alone.",
+      "files": [],
+      "expectations": [
+        "Every commit the agent made ends its subject with a row key",
+        "Each task of the feature has a commit naming its own key",
+        "Both tasks are Done",
+        "The feature is In review, with a summary of three lines at most",
+        "No comments were written on any row",
+        "No extra rows were created",
+        "The second feature is untouched",
+        "The tests pass and the work is pushed"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "record-requests",
+      "prompt": "Record two fictional requests without building them: export notebook notes as text, and fix pagination that repeats the first page. I will decide when to schedule them.",
+      "expected_output": "Two top-level rows: a feature for the export with a milestone, a why and two to five runnable acceptance lines, and a bug for pagination with steps, expected and actual. Short outcome titles, the origin recorded, nothing built, no comments, and a reply that says where each row stands.",
+      "files": [],
+      "expectations": [
+        "Exactly two new top-level rows: one feature and one bug",
+        "Titles are 80 characters or fewer and carry no key, date or requester",
+        "The feature has a milestone, a why, and two to five acceptance lines",
+        "The bug has a description and at least one acceptance line",
+        "The origin is recorded on both rows",
+        "Both rows wait in the backlog, not in the build queue",
+        "Nothing was built: no new commits",
+        "No comments were written on any row",
+        "The reply names both rows by key"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "blocked-and-noticed",
+      "prompt": "In this fictional exercise, the notebook import feature is blocked until the owner provides a synthetic sample file. Also record two small observations: the toolbar label has a typo and the help link is missing. Update the tracker only.",
+      "expected_output": "The import feature is blocked on the owner providing a synthetic sample file. The toolbar typo and missing help link are notes. Nothing is urgent and no comments are written.",
+      "files": [],
+      "expectations": [
+        "The import feature is blocked with the prerequisite recorded",
+        "Two small observations are notes",
+        "Nothing is marked urgent",
+        "No comments are written",
+        "The response names the unresolved prerequisite"
+      ]
+    }
+  ]
+}
